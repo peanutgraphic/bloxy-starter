@@ -1,0 +1,11 @@
+{
+    "name": "peanutgraphic/bloxy-starter",
+    "description": "BLOXY starter — Laravel skeleton with bloxy-core + bloxy-ui pre-installed",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
