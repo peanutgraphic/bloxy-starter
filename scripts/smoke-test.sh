@@ -115,7 +115,18 @@ npm install --legacy-peer-deps --no-audit --no-fund 2>&1 | tail -8
 echo "==> npm run build (produces public/build/manifest.json for Inertia tests)"
 npm run build 2>&1 | tail -8
 
+if [ "${SMOKE_VARIANT:-default}" = "passkey-only" ]; then
+  echo "==> SMOKE_VARIANT=passkey-only — running bloxy:passkey-only swap"
+  php artisan bloxy:passkey-only --no-interaction
+
+  echo "==> Re-migrating (passkey-only adds make_users_password_nullable)"
+  php artisan migrate --graceful --force
+
+  echo "==> Re-building Vite manifest with new passkey pages"
+  npm run build 2>&1 | tail -8
+fi
+
 echo "==> Running starter Pest suite"
 vendor/bin/pest --colors=always
 
-echo "==> Smoke test PASSED"
+echo "==> Smoke test PASSED (variant=${SMOKE_VARIANT:-default})"
