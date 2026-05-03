@@ -1,0 +1,43 @@
+# UPSTREAM.lock — pinned versions of every external skeleton imported into
+# packages/starter/. Re-running B1.7.0b's plan against this file produces
+# a byte-identical starter. A future `bloxy:starter-renovate` artisan
+# command will diff this file against latest upstream versions and produce
+# an upgrade PR.
+#
+# Hand-edits are allowed but must be paired with a matching re-run of the
+# import scripts; otherwise the on-disk skeleton drifts from this manifest.
+
+schema_version: 1
+locked_at: "2026-05-03"
+
+upstreams:
+  - id: laravel
+    package: laravel/laravel
+    version: "v12.12.2"
+    composer_command: 'composer create-project "laravel/laravel:${VERSION}" <tmp> --no-install --remove-vcs --no-interaction'
+    tree_sha256: "d010ca210ec84ff167339c8f3dfb8dc802a753fca0564a267d71c99258029611"
+    imported_into: "packages/starter/"
+    excludes:
+      - composer.json
+      - README.md
+      - .git
+      - vendor
+      - node_modules
+      - composer.lock
+      - package-lock.json
+
+  - id: breeze
+    package: laravel/breeze
+    version: "v2.4.1"
+    install_command: 'composer require laravel/breeze:${VERSION} --dev && php artisan breeze:install react --typescript --no-interaction'
+    imported_into: "packages/starter/"
+    keep_paths:
+      # Files in the starter that take precedence over breeze's output during
+      # the merge (rsync's --exclude-from). Order matters; entries below are
+      # the BLOXY-customized files that breeze would otherwise overwrite.
+      - composer.json
+      - README.md
+      - UPSTREAM.lock
+      - scripts/
+      - .claude/
+      - .env

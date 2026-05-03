@@ -1,16 +1,16 @@
-# BLOXY Starter
+# bloxy-starter
 
-A Laravel 12 skeleton pre-configured with `bloxy-core` and `bloxy-ui`.
-
-## Status
-
-**Stub.** M1.7 fills this in with the full skeleton.
-
-## Future usage
+Laravel 12 + Inertia + React + TypeScript + Tailwind 4 skeleton with all five BLOXY packages pre-wired (`bloxy-core`, `bloxy-files`, `bloxy-ui`, `bloxy-crypto`, `bloxy-passkey`). Consume via:
 
 ```bash
-composer create-project peanutgraphic/bloxy-starter <new-app>
+composer create-project peanutgraphic/bloxy-starter myapp
+cd myapp
+composer setup
+php artisan serve
 ```
 
-Produces a working two-shell Laravel app (cockpit + portal) with auth, agent
-registry, suggestion layer, audit log, and observability wired up.
+See [`docs/starter.md`](https://github.com/peanutgraphic/bloxy/blob/main/docs/starter.md) in the BLOXY monorepo for the full consumer guide.
+
+## License
+
+MIT.

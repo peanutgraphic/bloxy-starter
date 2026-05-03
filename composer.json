@@ -1,11 +1,80 @@
 {
     "name": "peanutgraphic/bloxy-starter",
-    "description": "BLOXY starter — Laravel skeleton with bloxy-core + bloxy-ui pre-installed",
     "type": "project",
+    "description": "BLOXY starter — Laravel 12 + Inertia + React + TypeScript + Tailwind 4 skeleton with bloxy-core + bloxy-files + bloxy-ui + bloxy-crypto + bloxy-passkey pre-wired. Use via composer create-project.",
     "license": "MIT",
+    "keywords": ["bloxy", "laravel", "starter", "skeleton", "inertia", "react"],
     "require": {
-        "php": "^8.3"
+        "php": "^8.3",
+        "laravel/framework": "^12.0",
+        "laravel/breeze": "^2.0",
+        "laravel/tinker": "^2.10",
+        "inertiajs/inertia-laravel": "^2.0",
+        "tightenco/ziggy": "^2.0",
+        "peanutgraphic/bloxy-core": "*",
+        "peanutgraphic/bloxy-files": "*",
+        "peanutgraphic/bloxy-ui": "*",
+        "peanutgraphic/bloxy-crypto": "*",
+        "peanutgraphic/bloxy-passkey": "*"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.22",
+        "laravel/sail": "^1.43",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "setup": [
+            "composer install",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate",
+            "@php artisan migrate --graceful --force",
+            "@php artisan vendor:publish --tag=bloxy-config --force --ansi",
+            "@php artisan vendor:publish --tag=bloxy-files-config --force --ansi",
+            "@php artisan vendor:publish --tag=bloxy-ui-config --force --ansi",
+            "@php artisan vendor:publish --tag=bloxy-ui-tailwind --force --ansi",
+            "@php artisan vendor:publish --tag=bloxy-crypto-config --force --ansi",
+            "@php artisan vendor:publish --tag=bloxy-passkey-config --force --ansi",
+            "npm install",
+            "npm run build"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        { "type": "path", "url": "../core-php",   "options": { "symlink": true } },
+        { "type": "path", "url": "../files-php",  "options": { "symlink": true } },
+        { "type": "path", "url": "../ui-php",     "options": { "symlink": true } },
+        { "type": "path", "url": "../crypto-php", "options": { "symlink": true } },
+        { "type": "path", "url": "../passkey-php","options": { "symlink": true } }
+    ]
 }
