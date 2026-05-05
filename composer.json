@@ -11,11 +11,11 @@
         "laravel/tinker": "^2.10",
         "inertiajs/inertia-laravel": "^2.0",
         "tightenco/ziggy": "^2.0",
-        "peanutgraphic/bloxy-core": "*",
-        "peanutgraphic/bloxy-files": "*",
-        "peanutgraphic/bloxy-ui": "*",
-        "peanutgraphic/bloxy-crypto": "*",
-        "peanutgraphic/bloxy-passkey": "*"
+        "peanutgraphic/bloxy-core": "self.version",
+        "peanutgraphic/bloxy-files": "self.version",
+        "peanutgraphic/bloxy-ui": "self.version",
+        "peanutgraphic/bloxy-crypto": "self.version",
+        "peanutgraphic/bloxy-passkey": "self.version"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
