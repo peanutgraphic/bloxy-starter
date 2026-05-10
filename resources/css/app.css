@@ -1,3 +1,11 @@
+/*
+ * IBM Plex Sans (display + body, weights 400/500/600) and IBM Plex Mono
+ * (audit values, encrypted-field markers, record IDs). Loaded from
+ * Google Fonts for dev convenience; for production / compliance contexts
+ * that disallow external CDN calls, self-host per docs/ui-foundations.md.
+ */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
