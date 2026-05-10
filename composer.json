@@ -2,7 +2,7 @@
     "name": "peanutgraphic/bloxy-starter",
     "type": "project",
     "description": "BLOXY starter — Laravel 12 + Inertia + React + TypeScript + Tailwind 4 skeleton with bloxy-core + bloxy-files + bloxy-ui + bloxy-crypto + bloxy-passkey pre-wired. Use via composer create-project.",
-    "license": "MIT",
+    "license": "proprietary",
     "keywords": ["bloxy", "laravel", "starter", "skeleton", "inertia", "react"],
     "require": {
         "php": "^8.3",
